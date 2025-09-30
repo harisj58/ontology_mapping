@@ -1,0 +1,208 @@
+{
+  "customers": {
+    "standard_columns": [
+      "customer_id",
+      "customer_name",
+      "customer_email",
+      "customer_phone",
+      "customer_address",
+      "customer_city",
+      "customer_state",
+      "customer_zip",
+      "customer_country",
+      "customer_type",
+      "registration_date",
+      "last_login_date",
+      "customer_status",
+      "preferred_language",
+      "customer_segment",
+      "loyalty_points",
+      "date_of_birth",
+      "gender",
+      "occupation",
+      "income_range"
+    ],
+    "semantic_groups": {
+      "identifiers": [
+        "customer_id"
+      ],
+      "personal_info": [
+        "customer_name",
+        "date_of_birth",
+        "gender",
+        "occupation"
+      ],
+      "contact": [
+        "customer_email",
+        "customer_phone",
+        "customer_address"
+      ],
+      "location": [
+        "customer_city",
+        "customer_state",
+        "customer_zip",
+        "customer_country"
+      ]
+    }
+  },
+  "orders": {
+    "standard_columns": [
+      "order_id",
+      "customer_id",
+      "order_date",
+      "order_status",
+      "order_total",
+      "payment_method",
+      "shipping_address",
+      "shipping_city",
+      "shipping_state",
+      "shipping_zip",
+      "delivery_date",
+      "order_notes",
+      "discount_amount",
+      "tax_amount",
+      "shipping_cost",
+      "order_source",
+      "coupon_code",
+      "estimated_delivery",
+      "actual_delivery",
+      "order_priority"
+    ],
+    "semantic_groups": {
+      "identifiers": [
+        "order_id",
+        "customer_id"
+      ],
+      "financial": [
+        "order_total",
+        "discount_amount",
+        "tax_amount",
+        "shipping_cost"
+      ],
+      "temporal": [
+        "order_date",
+        "delivery_date",
+        "estimated_delivery",
+        "actual_delivery"
+      ]
+    }
+  },
+  "products": {
+    "standard_columns": [
+      "product_id",
+      "product_name",
+      "product_description",
+      "product_category",
+      "product_subcategory",
+      "product_brand",
+      "product_price",
+      "product_cost",
+      "product_sku",
+      "product_barcode",
+      "stock_quantity",
+      "reorder_level",
+      "supplier_id",
+      "product_weight",
+      "product_dimensions",
+      "product_color",
+      "product_size",
+      "product_status",
+      "date_added",
+      "last_updated"
+    ],
+    "semantic_groups": {
+      "identifiers": [
+        "product_id",
+        "product_sku",
+        "product_barcode"
+      ],
+      "descriptive": [
+        "product_name",
+        "product_description",
+        "product_category"
+      ],
+      "financial": [
+        "product_price",
+        "product_cost"
+      ]
+    }
+  },
+  "employees": {
+    "standard_columns": [
+      "employee_id",
+      "employee_name",
+      "employee_email",
+      "employee_phone",
+      "employee_department",
+      "employee_position",
+      "employee_salary",
+      "hire_date",
+      "termination_date",
+      "employee_status",
+      "manager_id",
+      "employee_address",
+      "employee_city",
+      "employee_state",
+      "employee_zip",
+      "date_of_birth",
+      "emergency_contact",
+      "emergency_phone",
+      "performance_rating",
+      "years_of_service"
+    ],
+    "semantic_groups": {
+      "identifiers": [
+        "employee_id"
+      ],
+      "personal": [
+        "employee_name",
+        "date_of_birth"
+      ],
+      "contact": [
+        "employee_email",
+        "employee_phone"
+      ]
+    }
+  },
+  "transactions": {
+    "standard_columns": [
+      "transaction_id",
+      "order_id",
+      "customer_id",
+      "transaction_date",
+      "transaction_amount",
+      "transaction_type",
+      "transaction_status",
+      "payment_method",
+      "payment_processor",
+      "transaction_fee",
+      "currency_code",
+      "exchange_rate",
+      "card_last_four",
+      "authorization_code",
+      "settlement_date",
+      "refund_amount",
+      "refund_date",
+      "transaction_notes",
+      "merchant_id",
+      "terminal_id"
+    ],
+    "semantic_groups": {
+      "identifiers": [
+        "transaction_id",
+        "order_id",
+        "customer_id"
+      ],
+      "financial": [
+        "transaction_amount",
+        "transaction_fee",
+        "refund_amount"
+      ],
+      "temporal": [
+        "transaction_date",
+        "settlement_date",
+        "refund_date"
+      ]
+    }
+  }
+}
