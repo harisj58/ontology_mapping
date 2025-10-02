@@ -10,7 +10,8 @@ from transformers import AutoTokenizer, AutoModel
 import json
 import os
 from typing import List, Tuple, Dict
-import numpy as np
+import pandas as pd
+from tqdm import tqdm
 
 
 # ============== MODEL DEFINITIONS (same as training script) ==============
@@ -128,7 +129,9 @@ class TwoStageInferenceEngine:
 
         # Load Stage 1 model
         stage1_checkpoint = torch.load(
-            f"{model_dir}/stage1_complete.pt", map_location=self.device
+            f"{model_dir}/stage1_complete.pt",
+            map_location=self.device,
+            weights_only=False,
         )
 
         self.stage1_config = stage1_checkpoint["config"]
@@ -145,7 +148,9 @@ class TwoStageInferenceEngine:
 
         # Load Stage 2 model
         stage2_checkpoint = torch.load(
-            f"{model_dir}/stage2_complete.pt", map_location=self.device
+            f"{model_dir}/stage2_complete.pt",
+            map_location=self.device,
+            weights_only=False,
         )
 
         self.stage2_temperature = stage2_checkpoint.get("temperature", 1.0)
@@ -465,5 +470,55 @@ def run_repl():
             traceback.print_exc()
 
 
+def check_accuracy():
+    test_df = pd.read_csv("./two_stage_datasets/final_two_step_test.csv")
+
+    # Initialize engine
+    try:
+        engine = TwoStageInferenceEngine(
+            model_dir="./runs/run_20251002_173435/",
+            schema_path="./two_stage_datasets/domain_metadata.json",
+        )
+    except Exception as e:
+        print(f"\nError loading models: {e}")
+        print("\nMake sure you have:")
+        print("  1. Trained models in ./models/ directory")
+        print("  2. schema.json file with standard columns per table")
+        return
+
+    correct = 0
+    total = 0
+    top_3_accuracy = 0
+
+    # inference only first 200 rows
+    test_df = test_df.head(200)
+    print(f"\n\nTest dataframe:\n{test_df.head()}\n\n")
+
+    # sort on basis of confidence score then find accuracy and top-3 accuracy
+    for index, row in tqdm(test_df.iterrows(), total=len(test_df)):
+        results = engine.predict(
+            row["Input File Name"],
+            row["Input Column Name"],
+            top_tables=3,
+            top_columns=3,
+        )
+        results.sort(key=lambda x: x["combined_confidence"], reverse=True)
+        if results[0]["output_table_name"] == row["True Table Name"]:
+            correct += 1
+        # else:
+        #     print(row)
+        #     print(json.dumps(results, indent=2))
+
+        if (
+            results[0]["output_column_name"] == row["True Column Name"]
+            or results[1]["output_column_name"] == row["True Column Name"]
+            or results[2]["output_column_name"] == row["True Column Name"]
+        ):
+            top_3_accuracy += 1
+        total += 1
+    print(f"Accuracy: {correct/total}")
+    print(f"Top-3 Accuracy: {top_3_accuracy/total}")
+
+
 if __name__ == "__main__":
-    run_repl()
+    check_accuracy()
