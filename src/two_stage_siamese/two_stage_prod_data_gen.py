@@ -36,178 +36,168 @@ class TwoStageDatasetGenerator:
     def _define_domains(self):
         """Define comprehensive business domains"""
         return {
-            "customers": {
+            "fact": {
                 "standard_columns": [
-                    "customer_id",
-                    "customer_name",
-                    "customer_email",
-                    "customer_phone",
-                    "customer_address",
-                    "customer_city",
-                    "customer_state",
-                    "customer_zip",
-                    "customer_country",
-                    "customer_type",
-                    "registration_date",
-                    "last_login_date",
-                    "customer_status",
-                    "preferred_language",
-                    "customer_segment",
-                    "loyalty_points",
-                    "date_of_birth",
-                    "gender",
-                    "occupation",
-                    "income_range",
+                    "GEOGRAPHY_KEY_TOTAL",
+                    "TIME_KEY_TOTAL",
+                    "UPC_13_DIGIT_TOTAL",
+                    "DOLLAR_SALES_TOTAL",
+                    "DOLLAR_SALES_ANY_MERCH",
+                    "DOLLAR_SALES_PRICE_REDUCTIONS_ONLY",
+                    "DOLLAR_SALES_FEATURE_ONLY",
+                    "DOLLAR_SALES_DISPLAY_ONLY",
+                    "DOLLAR_SALES_FEATURE_AND_DISPLAY",
+                    "UNIT_SALES_TOTAL",
+                    "UNIT_SALES_ANY_MERCH",
+                    "UNIT_SALES_PRICE_REDUCTIONS_ONLY",
+                    "UNIT_SALES_FEATURE_ONLY",
+                    "UNIT_SALES_DISPLAY_ONLY",
+                    "UNIT_SALES_FEATURE_AND_DISPLAY",
+                    "VOLUME_SALES_TOTAL",
+                    "VOLUME_SALES_ANY_MERCH",
+                    "VOLUME_SALES_PRICE_REDUCTIONS_ONLY",
+                    "VOLUME_SALES_FEATURE_ONLY",
+                    "VOLUME_SALES_DISPLAY_ONLY",
+                    "VOLUME_SALES_FEATURE_AND_DISPLAY",
+                    "BASE_DOLLAR_SALES_TOTAL",
+                    "BASE_UNIT_SALES_TOTAL",
+                    "BASE_VOLUME_SALES_TOTAL",
+                    "ACV_WEIGHTED_DISTRIBUTION_TOTAL",
+                    "AVERAGE_WEEKLY_ACV_DISTRIBUTION_TOTAL",
+                    "AVERAGE_WEEKLY_ACV_DISTRIBUTION_ANY_MERCH",
+                    "AVERAGE_WEEKLY_ACV_DISTRIBUTION_PRICE_REDUCTIONS_ONLY",
+                    "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_ONLY",
+                    "AVERAGE_WEEKLY_ACV_DISTRIBUTION_DISPLAY_ONLY",
+                    "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_AND_DISPLAY",
+                    "INCREMENTAL_VOLUME_TOTAL",
+                    "INCREMENTAL_VOLUME_PRICE_REDUCTIONS_ONLY",
+                    "INCREMENTAL_VOLUME_FEATURE_ONLY",
+                    "INCREMENTAL_VOLUME_DISPLAY_ONLY",
+                    "INCREMENTAL_VOLUME_FEATURE_AND_DISPLAY",
+                    "WEIGHTED_AVERAGE_BASE_PRICE_PER_VOLUME_TOTAL",
+                    "CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+                    "TOTAL_POINTS_OF_CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+                    "DISCOUNT_TOTAL",
                 ],
                 "semantic_groups": {
-                    "identifiers": ["customer_id"],
-                    "personal_info": [
-                        "customer_name",
-                        "date_of_birth",
-                        "gender",
-                        "occupation",
+                    "identifiers": [
+                        "GEOGRAPHY_KEY_TOTAL",
+                        "TIME_KEY_TOTAL",
+                        "UPC_13_DIGIT_TOTAL",
                     ],
-                    "contact": ["customer_email", "customer_phone", "customer_address"],
-                    "location": [
-                        "customer_city",
-                        "customer_state",
-                        "customer_zip",
-                        "customer_country",
+                    "sales_dollar": [
+                        "DOLLAR_SALES_TOTAL",
+                        "DOLLAR_SALES_ANY_MERCH",
+                        "DOLLAR_SALES_PRICE_REDUCTIONS_ONLY",
+                        "DOLLAR_SALES_FEATURE_ONLY",
+                        "DOLLAR_SALES_DISPLAY_ONLY",
+                        "DOLLAR_SALES_FEATURE_AND_DISPLAY",
+                        "BASE_DOLLAR_SALES_TOTAL",
+                    ],
+                    "sales_unit": [
+                        "UNIT_SALES_TOTAL",
+                        "UNIT_SALES_ANY_MERCH",
+                        "UNIT_SALES_PRICE_REDUCTIONS_ONLY",
+                        "UNIT_SALES_FEATURE_ONLY",
+                        "UNIT_SALES_DISPLAY_ONLY",
+                        "UNIT_SALES_FEATURE_AND_DISPLAY",
+                        "BASE_UNIT_SALES_TOTAL",
+                    ],
+                    "sales_volume": [
+                        "VOLUME_SALES_TOTAL",
+                        "VOLUME_SALES_ANY_MERCH",
+                        "VOLUME_SALES_PRICE_REDUCTIONS_ONLY",
+                        "VOLUME_SALES_FEATURE_ONLY",
+                        "VOLUME_SALES_DISPLAY_ONLY",
+                        "VOLUME_SALES_FEATURE_AND_DISPLAY",
+                        "BASE_VOLUME_SALES_TOTAL",
+                    ],
+                    "distribution": [
+                        "ACV_WEIGHTED_DISTRIBUTION_TOTAL",
+                        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_TOTAL",
+                        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_ANY_MERCH",
+                        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_PRICE_REDUCTIONS_ONLY",
+                        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_ONLY",
+                        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_DISPLAY_ONLY",
+                        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_AND_DISPLAY",
+                        "CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+                        "TOTAL_POINTS_OF_CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+                    ],
+                    "incremental_metrics": [
+                        "INCREMENTAL_VOLUME_TOTAL",
+                        "INCREMENTAL_VOLUME_PRICE_REDUCTIONS_ONLY",
+                        "INCREMENTAL_VOLUME_FEATURE_ONLY",
+                        "INCREMENTAL_VOLUME_DISPLAY_ONLY",
+                        "INCREMENTAL_VOLUME_FEATURE_AND_DISPLAY",
+                    ],
+                    "pricing": [
+                        "WEIGHTED_AVERAGE_BASE_PRICE_PER_VOLUME_TOTAL",
+                        "DISCOUNT_TOTAL",
                     ],
                 },
             },
-            "orders": {
+            "geography_dim": {
+                "standard_columns": ["GEOGRAPHY_KEY", "GEOGRAPHY_DESCRIPTION"],
+                "semantic_groups": {
+                    "identifiers": ["GEOGRAPHY_KEY"],
+                    "descriptions": ["GEOGRAPHY_DESCRIPTION"],
+                },
+            },
+            "product_dim": {
                 "standard_columns": [
-                    "order_id",
-                    "customer_id",
-                    "order_date",
-                    "order_status",
-                    "order_total",
-                    "payment_method",
-                    "shipping_address",
-                    "shipping_city",
-                    "shipping_state",
-                    "shipping_zip",
-                    "delivery_date",
-                    "order_notes",
-                    "discount_amount",
-                    "tax_amount",
-                    "shipping_cost",
-                    "order_source",
-                    "coupon_code",
-                    "estimated_delivery",
-                    "actual_delivery",
-                    "order_priority",
+                    "PRODUCT_DESCRIPTION",
+                    "UPC_13_DIGIT",
+                    "ALTERNATIVE_ADULT_BEVERAGE_VALUE",
+                    "BEER_CATEGORY_VALUE",
+                    "BEER_VENDOR_VALUE",
+                    "BEER_SEGMENT_VALUE",
+                    "BEER_PRICE_SEGMENT_VALUE",
+                    "BEER_BRAND_FAMILY_VALUE",
+                    "BEER_BRAND_VALUE",
+                    "BEER_DOM_VS_IMP_VALUE",
+                    "BEER_PACKAGE_VALUE",
+                    "BEER_SIZE_VALUE",
+                    "BEER_BRAND_TYPE_VALUE",
+                    "BEER_SIZE_GROUP_VALUE",
+                    "MEZZO_STYLE_VALUE",
+                    "MACRO_STYLE_VALUE",
+                    "MICRO_STYLE_VALUE",
+                    "BEER_COUNT_GROUP_VALUE",
                 ],
                 "semantic_groups": {
-                    "identifiers": ["order_id", "customer_id"],
-                    "financial": [
-                        "order_total",
-                        "discount_amount",
-                        "tax_amount",
-                        "shipping_cost",
+                    "identifiers": ["UPC_13_DIGIT"],
+                    "descriptions": ["PRODUCT_DESCRIPTION"],
+                    "category_attributes": [
+                        "ALTERNATIVE_ADULT_BEVERAGE_VALUE",
+                        "BEER_CATEGORY_VALUE",
+                        "BEER_SEGMENT_VALUE",
+                        "BEER_PRICE_SEGMENT_VALUE",
                     ],
-                    "temporal": [
-                        "order_date",
-                        "delivery_date",
-                        "estimated_delivery",
-                        "actual_delivery",
+                    "brand_attributes": [
+                        "BEER_VENDOR_VALUE",
+                        "BEER_BRAND_FAMILY_VALUE",
+                        "BEER_BRAND_VALUE",
+                        "BEER_BRAND_TYPE_VALUE",
+                        "BEER_DOM_VS_IMP_VALUE",
+                    ],
+                    "packaging_attributes": [
+                        "BEER_PACKAGE_VALUE",
+                        "BEER_SIZE_VALUE",
+                        "BEER_SIZE_GROUP_VALUE",
+                        "BEER_COUNT_GROUP_VALUE",
+                    ],
+                    "style_attributes": [
+                        "MEZZO_STYLE_VALUE",
+                        "MACRO_STYLE_VALUE",
+                        "MICRO_STYLE_VALUE",
                     ],
                 },
             },
-            "products": {
-                "standard_columns": [
-                    "product_id",
-                    "product_name",
-                    "product_description",
-                    "product_category",
-                    "product_subcategory",
-                    "product_brand",
-                    "product_price",
-                    "product_cost",
-                    "product_sku",
-                    "product_barcode",
-                    "stock_quantity",
-                    "reorder_level",
-                    "supplier_id",
-                    "product_weight",
-                    "product_dimensions",
-                    "product_color",
-                    "product_size",
-                    "product_status",
-                    "date_added",
-                    "last_updated",
-                ],
+            "time_dim": {
+                "standard_columns": ["TIME_KEY", "TIME_DESCRIPTION"],
                 "semantic_groups": {
-                    "identifiers": ["product_id", "product_sku", "product_barcode"],
-                    "descriptive": [
-                        "product_name",
-                        "product_description",
-                        "product_category",
-                    ],
-                    "financial": ["product_price", "product_cost"],
-                },
-            },
-            "employees": {
-                "standard_columns": [
-                    "employee_id",
-                    "employee_name",
-                    "employee_email",
-                    "employee_phone",
-                    "employee_department",
-                    "employee_position",
-                    "employee_salary",
-                    "hire_date",
-                    "termination_date",
-                    "employee_status",
-                    "manager_id",
-                    "employee_address",
-                    "employee_city",
-                    "employee_state",
-                    "employee_zip",
-                    "date_of_birth",
-                    "emergency_contact",
-                    "emergency_phone",
-                    "performance_rating",
-                    "years_of_service",
-                ],
-                "semantic_groups": {
-                    "identifiers": ["employee_id"],
-                    "personal": ["employee_name", "date_of_birth"],
-                    "contact": ["employee_email", "employee_phone"],
-                },
-            },
-            "transactions": {
-                "standard_columns": [
-                    "transaction_id",
-                    "order_id",
-                    "customer_id",
-                    "transaction_date",
-                    "transaction_amount",
-                    "transaction_type",
-                    "transaction_status",
-                    "payment_method",
-                    "payment_processor",
-                    "transaction_fee",
-                    "currency_code",
-                    "exchange_rate",
-                    "card_last_four",
-                    "authorization_code",
-                    "settlement_date",
-                    "refund_amount",
-                    "refund_date",
-                    "transaction_notes",
-                    "merchant_id",
-                    "terminal_id",
-                ],
-                "semantic_groups": {
-                    "identifiers": ["transaction_id", "order_id", "customer_id"],
-                    "financial": [
-                        "transaction_amount",
-                        "transaction_fee",
-                        "refund_amount",
-                    ],
-                    "temporal": ["transaction_date", "settlement_date", "refund_date"],
+                    "identifiers": ["TIME_KEY"],
+                    "descriptions": ["TIME_DESCRIPTION"],
                 },
             },
         }
@@ -215,127 +205,216 @@ class TwoStageDatasetGenerator:
     def _define_file_patterns(self):
         """Define file naming patterns for each table"""
         return {
-            "customers": {
+            "fact": {
                 "explicit": [
-                    "customers.{ext}",
-                    "customer_data.{ext}",
-                    "customer_export.{ext}",
-                    "customers_{date}.{ext}",
-                    "customer_list_{version}.{ext}",
-                    "raw_customers.{ext}",
-                    "staging_customers.{ext}",
-                    "customer_master.{ext}",
+                    "fact.{ext}",
+                    "fact_table.{ext}",
+                    "sales_fact.{ext}",
+                    "fact_export.{ext}",
+                    "fact_{date}.{ext}",
+                    "fact_metrics.{ext}",
+                    "raw_fact.{ext}",
+                    "staging_fact.{ext}",
+                    "fact_master.{ext}",
+                    "fact_{version}.{ext}",
+                    "fact_dump.{ext}",
+                    "fact_snapshot_{date}.{ext}",
                 ],
                 "implicit": [
-                    "clients.{ext}",
-                    "client_database.{ext}",
-                    "user_data.{ext}",
-                    "crm_export.{ext}",
-                    "member_list.{ext}",
-                    "accounts.{ext}",
-                    "contact_list.{ext}",
-                    "subscriber_data.{ext}",
-                ],
-                "ambiguous": [
-                    "data.{ext}",
-                    "export_{date}.{ext}",
-                    "report.{ext}",
-                    "database_dump.{ext}",
-                    "master_file.{ext}",
-                ],
-            },
-            "orders": {
-                "explicit": [
-                    "orders.{ext}",
-                    "order_data.{ext}",
-                    "order_history.{ext}",
-                    "orders_{date}.{ext}",
-                    "order_export_{version}.{ext}",
-                    "sales_orders.{ext}",
-                    "order_details.{ext}",
-                ],
-                "implicit": [
-                    "sales.{ext}",
-                    "purchases.{ext}",
                     "sales_data.{ext}",
-                    "transactions_report.{ext}",
-                    "invoice_data.{ext}",
-                    "purchase_history.{ext}",
-                    "bookings.{ext}",
+                    "transaction_data.{ext}",
+                    "market_facts.{ext}",
+                    "sales_export.{ext}",
+                    "performance_metrics.{ext}",
+                    "revenue_data.{ext}",
+                    "kpi_export.{ext}",
+                    "financials.{ext}",
+                    "analysis_facts.{ext}",
+                    "business_metrics.{ext}",
                 ],
                 "ambiguous": [
                     "data.{ext}",
                     "export_{date}.{ext}",
                     "report.{ext}",
-                    "sales_report.{ext}",
+                    "dataset.{ext}",
+                    "output_file.{ext}",
+                    "records.{ext}",
+                    "dump.{ext}",
+                    "details.{ext}",
+                    "datafile.{ext}",
+                    "snapshot.{ext}",
+                ],
+                "abbreviations": [
+                    "fct.{ext}",
+                    "facts.{ext}",
+                    "sfct.{ext}",
+                    "fact_tbl.{ext}",
+                    "facttbl.{ext}",
+                    "f_table.{ext}",
+                    "ft.{ext}",
+                    "fct_data.{ext}",
+                    "fct_exp.{ext}",
+                    "fct_mstr.{ext}",
+                    "fct_dim.{ext}",
+                    "fct_snp.{ext}",
                 ],
             },
-            "products": {
+            "geography_dim": {
                 "explicit": [
-                    "products.{ext}",
-                    "product_catalog.{ext}",
-                    "product_master.{ext}",
-                    "products_{date}.{ext}",
-                    "product_list.{ext}",
-                    "product_data.{ext}",
+                    "geography_dim.{ext}",
+                    "geography_dimension.{ext}",
+                    "geo_dim.{ext}",
+                    "geography_export.{ext}",
+                    "geography_{date}.{ext}",
+                    "geography_master.{ext}",
+                    "geo_dimension.{ext}",
+                    "geography_snapshot.{ext}",
+                    "staging_geography.{ext}",
+                    "geo_lookup.{ext}",
                 ],
                 "implicit": [
+                    "locations.{ext}",
+                    "region_data.{ext}",
+                    "territories.{ext}",
+                    "area_mapping.{ext}",
+                    "location_master.{ext}",
+                    "regional_dim.{ext}",
+                    "geo_data.{ext}",
+                    "zones.{ext}",
+                    "country_dim.{ext}",
+                    "state_region.{ext}",
+                ],
+                "ambiguous": [
+                    "data.{ext}",
+                    "mapping.{ext}",
+                    "lookup.{ext}",
+                    "dim_export.{ext}",
+                    "master_file.{ext}",
+                    "ref_data.{ext}",
+                    "codes.{ext}",
+                    "reference.{ext}",
+                    "list.{ext}",
+                    "dim_dump.{ext}",
+                ],
+                "abbreviations": [
+                    "geo.{ext}",
+                    "geog.{ext}",
+                    "gdim.{ext}",
+                    "gd.{ext}",
+                    "geo_dim.{ext}",
+                    "geo_ref.{ext}",
+                    "geo_tbl.{ext}",
+                    "geo_mstr.{ext}",
+                    "geo_lkp.{ext}",
+                    "geo_snp.{ext}",
+                    "g_data.{ext}",
+                    "geo_exp.{ext}",
+                ],
+            },
+            "product_dim": {
+                "explicit": [
+                    "product_dim.{ext}",
+                    "product_dimension.{ext}",
+                    "prod_dim.{ext}",
+                    "product_export.{ext}",
+                    "product_{date}.{ext}",
+                    "product_master.{ext}",
+                    "item_dim.{ext}",
+                    "product_snapshot.{ext}",
+                    "product_lookup.{ext}",
+                    "staging_product.{ext}",
+                    "product_catalog.{ext}",
+                    "product_list.{ext}",
+                ],
+                "implicit": [
+                    "items.{ext}",
+                    "sku_data.{ext}",
+                    "merchandise.{ext}",
                     "inventory.{ext}",
                     "catalog.{ext}",
-                    "items.{ext}",
-                    "sku_list.{ext}",
-                    "merchandise.{ext}",
-                    "stock_data.{ext}",
-                    "item_master.{ext}",
+                    "assortment.{ext}",
+                    "brand_dim.{ext}",
+                    "product_hierarchy.{ext}",
+                    "sku_master.{ext}",
+                    "item_data.{ext}",
                 ],
                 "ambiguous": [
                     "data.{ext}",
-                    "master.{ext}",
-                    "catalog_{date}.{ext}",
+                    "export_{date}.{ext}",
+                    "dump.{ext}",
+                    "records.{ext}",
+                    "dataset.{ext}",
+                    "master_file.{ext}",
+                    "details.{ext}",
+                    "upload.{ext}",
+                    "report.{ext}",
+                    "ref_data.{ext}",
+                ],
+                "abbreviations": [
+                    "prd.{ext}",
+                    "prod.{ext}",
+                    "pd.{ext}",
+                    "pdim.{ext}",
+                    "prd_dim.{ext}",
+                    "prd_tbl.{ext}",
+                    "prd_ref.{ext}",
+                    "prd_mstr.{ext}",
+                    "prd_exp.{ext}",
+                    "prd_snp.{ext}",
+                    "prd_lkp.{ext}",
+                    "prd_cat.{ext}",
                 ],
             },
-            "employees": {
+            "time_dim": {
                 "explicit": [
-                    "employees.{ext}",
-                    "employee_data.{ext}",
-                    "employee_roster.{ext}",
-                    "employees_{date}.{ext}",
-                    "staff_list.{ext}",
-                    "employee_master.{ext}",
+                    "time_dim.{ext}",
+                    "time_dimension.{ext}",
+                    "time_export.{ext}",
+                    "time_{date}.{ext}",
+                    "calendar_dim.{ext}",
+                    "date_dim.{ext}",
+                    "temporal_dim.{ext}",
+                    "time_master.{ext}",
+                    "staging_time.{ext}",
+                    "time_snapshot.{ext}",
                 ],
                 "implicit": [
-                    "staff.{ext}",
-                    "workforce.{ext}",
-                    "personnel.{ext}",
-                    "hr_data.{ext}",
-                    "payroll_data.{ext}",
-                    "team_roster.{ext}",
+                    "calendar.{ext}",
+                    "dates.{ext}",
+                    "periods.{ext}",
+                    "time_lookup.{ext}",
+                    "fiscal_calendar.{ext}",
+                    "time_mapping.{ext}",
+                    "date_mapping.{ext}",
+                    "timeline.{ext}",
+                    "temporal_data.{ext}",
+                    "schedule.{ext}",
                 ],
                 "ambiguous": [
                     "data.{ext}",
-                    "roster.{ext}",
-                    "hr_export.{ext}",
+                    "lookup.{ext}",
+                    "export.{ext}",
+                    "master_file.{ext}",
+                    "reference.{ext}",
+                    "dump.{ext}",
+                    "list.{ext}",
+                    "records.{ext}",
+                    "dataset.{ext}",
+                    "output.{ext}",
                 ],
-            },
-            "transactions": {
-                "explicit": [
-                    "transactions.{ext}",
-                    "transaction_data.{ext}",
-                    "transaction_log.{ext}",
-                    "transactions_{date}.{ext}",
-                    "payment_transactions.{ext}",
-                ],
-                "implicit": [
-                    "payments.{ext}",
-                    "payment_data.{ext}",
-                    "payment_history.{ext}",
-                    "financial_transactions.{ext}",
-                    "billing_data.{ext}",
-                ],
-                "ambiguous": [
-                    "data.{ext}",
-                    "financial_report.{ext}",
-                    "payment_log.{ext}",
+                "abbreviations": [
+                    "tm.{ext}",
+                    "tmdim.{ext}",
+                    "td.{ext}",
+                    "time_dim.{ext}",
+                    "tm_dim.{ext}",
+                    "time_tbl.{ext}",
+                    "time_ref.{ext}",
+                    "tm_mstr.{ext}",
+                    "tm_lkp.{ext}",
+                    "tm_snp.{ext}",
+                    "cal_dim.{ext}",
+                    "dt_dim.{ext}",
                 ],
             },
         }
@@ -361,6 +440,49 @@ class TwoStageDatasetGenerator:
                 "description": ["desc", "details", "info"],
                 "quantity": ["qty", "count", "cnt"],
                 "price": ["prc", "cost", "rate"],
+                "geography": ["geo", "geog", "geogr", "location", "loc"],
+                "distribution": ["dist", "distrib", "distr"],
+                "merchandise": ["merch", "mdse", "mds"],
+                "weighted": ["wtd", "wgtd", "wght"],
+                "average": ["avg", "mean", "av"],
+                "sales": ["sls", "sl"],
+                "dollar": ["dlr", "dol", "$"],
+                "unit": ["unt", "u"],
+                "volume": ["vol", "v"],
+                "total": ["tot", "ttl", "t"],
+                "feature": ["feat", "ftr", "ft"],
+                "display": ["disp", "dsp", "dply"],
+                "price": ["prc", "pr"],
+                "reduction": ["red", "reduct", "rdctn"],
+                "incremental": ["incr", "incrmntl", "inc"],
+                "base": ["bs", "baseline"],
+                "weekly": ["wkly", "wk", "week"],
+                "category": ["cat", "ctgry", "categ"],
+                "discount": ["disc", "dsc", "dcnt"],
+                "points": ["pts", "pt", "pnts"],
+                "alternative": ["alt", "altrntv"],
+                "adult": ["adlt", "ad"],
+                "beverage": ["bev", "bvg", "drink"],
+                "beer": ["br"],
+                "vendor": ["vend", "vndr", "supplier", "supp"],
+                "segment": ["seg", "sgmt", "sect"],
+                "family": ["fam", "fmly"],
+                "brand": ["brnd", "br"],
+                "domestic": ["dom", "dmstc"],
+                "import": ["imp", "imprt", "imported"],
+                "versus": ["vs", "v"],
+                "package": ["pkg", "pack", "pckg"],
+                "size": ["sz", "sze"],
+                "group": ["grp", "gp"],
+                "type": ["typ", "tp"],
+                "style": ["styl", "sty"],
+                "macro": ["mac", "mcro"],
+                "micro": ["mic", "mcro"],
+                "mezzo": ["mez", "mzzo"],
+                "count": ["cnt", "ct"],
+                "time": ["tm", "t"],
+                "thirteen": ["13", "13_digit"],
+                "digit": ["dgt", "dig"],
             },
             "synonyms": {
                 "customer": [
@@ -380,8 +502,53 @@ class TwoStageDatasetGenerator:
                 "date": ["timestamp", "datetime", "time"],
                 "total": ["amount", "sum", "value", "grand_total"],
                 "status": ["state", "condition", "stage"],
+                "geography": ["location", "region", "area", "territory", "place"],
+                "sales": ["revenue", "turnover", "proceeds", "receipts"],
+                "dollar": ["revenue", "monetary", "currency", "money"],
+                "unit": ["quantity", "qty", "piece", "each"],
+                "volume": ["capacity", "size", "amount", "bulk"],
+                "distribution": ["allocation", "spread", "coverage"],
+                "merchandise": ["promotion", "marketing", "advertising"],
+                "feature": ["highlight", "promotion", "advertised"],
+                "display": ["showcase", "exhibition", "presentation"],
+                "price": ["cost", "rate", "charge", "fee"],
+                "reduction": ["discount", "markdown", "decrease", "cut"],
+                "incremental": ["additional", "extra", "marginal", "added"],
+                "base": ["baseline", "foundation", "standard", "regular"],
+                "average": ["mean", "typical", "standard"],
+                "weighted": ["adjusted", "balanced", "modified"],
+                "category": ["class", "type", "group", "segment"],
+                "discount": ["reduction", "markdown", "rebate", "deduction"],
+                "alternative": ["substitute", "option", "other"],
+                "beverage": ["drink", "liquid", "refreshment"],
+                "vendor": ["supplier", "provider", "manufacturer"],
+                "segment": ["category", "division", "section"],
+                "brand": ["label", "mark", "trademark"],
+                "domestic": ["local", "national", "home"],
+                "import": ["foreign", "international", "imported"],
+                "package": ["container", "pack", "packaging"],
+                "style": ["type", "kind", "variety"],
             },
-            "prefixes": ["raw_", "src_", "orig_", "old_", "legacy_", "temp_", "new_"],
+            "prefixes": [
+                "raw_",
+                "src_",
+                "orig_",
+                "old_",
+                "legacy_",
+                "temp_",
+                "new_",
+                "stg_",
+                "staging_",
+                "dim_",
+                "fact_",
+                "agg_",
+                "aggregate_",
+                "sum_",
+                "total_",
+                "base_",
+                "incr_",
+                "incremental_",
+            ],
             "suffixes": [
                 "_raw",
                 "_src",
@@ -392,6 +559,29 @@ class TwoStageDatasetGenerator:
                 "_new",
                 "_v1",
                 "_v2",
+                "_key",
+                "_id",
+                "_code",
+                "_ref",
+                "_amt",
+                "_value",
+                "_val",
+                "_measure",
+                "_metric",
+                "_total",
+                "_tot",
+                "_sum",
+                "_cnt",
+                "_count",
+                "_qty",
+                "_quantity",
+                "_desc",
+                "_description",
+                "_name",
+                "_nm",
+                "_flag",
+                "_ind",
+                "_indicator",
             ],
         }
 
@@ -419,19 +609,24 @@ class TwoStageDatasetGenerator:
         for table in tables:
             patterns = self.file_patterns[table]
 
-            # Explicit file names (40%)
+            # Explicit file names (30%)
             explicit_samples = self._generate_explicit_filenames(
-                table, patterns["explicit"], int(samples_per_table * 0.4)
+                table, patterns["explicit"], int(samples_per_table * 0.3)
             )
 
-            # Implicit file names (30%)
+            # Implicit file names (25%)
             implicit_samples = self._generate_implicit_filenames(
-                table, patterns["implicit"], int(samples_per_table * 0.3)
+                table, patterns["implicit"], int(samples_per_table * 0.25)
             )
 
-            # Ambiguous file names (20%)
+            # Abbreviations (20%)
+            abbreviation_samples = self._generate_abbreviation_filenames(
+                table, patterns["abbreviations"], int(samples_per_table * 0.2)
+            )
+
+            # Ambiguous file names (15%)
             ambiguous_samples = self._generate_ambiguous_filenames(
-                table, patterns["ambiguous"], int(samples_per_table * 0.2)
+                table, patterns["ambiguous"], int(samples_per_table * 0.15)
             )
 
             # Noisy/misleading file names (10%)
@@ -441,6 +636,7 @@ class TwoStageDatasetGenerator:
 
             all_samples.extend(explicit_samples)
             all_samples.extend(implicit_samples)
+            all_samples.extend(abbreviation_samples)
             all_samples.extend(ambiguous_samples)
             all_samples.extend(noisy_samples)
 
@@ -511,6 +707,60 @@ class TwoStageDatasetGenerator:
                 )
 
             filename = self._apply_case_variation(filename)
+
+            samples.append(
+                {
+                    "file_name": filename,
+                    "table": table,
+                }
+            )
+
+        return samples
+
+    def _generate_abbreviation_filenames(self, table, patterns, n_samples):
+        """Generate file names using abbreviations and shortened forms"""
+        samples = []
+        extensions = ["csv", "xlsx", "txt", "dat"]
+        dates = ["2024", "jan", "q1", "20240115", "2023", "dec"]
+
+        # Common prefixes/suffixes for abbreviations
+        prefixes = ["", "data_", "tbl_", "rpt_", "exp_", "imp_"]
+        suffixes = ["", "_data", "_report", "_export", "_final", "_v1", "_backup"]
+        separators = ["_", "-", ""]
+
+        for _ in range(n_samples):
+            pattern = random.choice(patterns)
+            ext = random.choice(extensions)
+
+            # Build filename with possible prefix/suffix
+            prefix = random.choice(prefixes) if random.random() > 0.6 else ""
+            suffix = random.choice(suffixes) if random.random() > 0.6 else ""
+            separator = random.choice(separators)
+
+            # Handle date placeholder if present
+            if "{date}" in pattern:
+                date_val = random.choice(dates)
+                base_name = pattern.format(date=date_val)
+            else:
+                base_name = pattern
+
+            # Construct full filename
+            if prefix and separator:
+                filename = f"{prefix}{separator}{base_name}"
+            else:
+                filename = f"{prefix}{base_name}"
+
+            if suffix:
+                filename = f"{filename}{suffix}"
+
+            filename = f"{filename}.{ext}"
+
+            # Apply case variations
+            filename = self._apply_case_variation(filename)
+
+            # Occasionally remove separators for more ambiguity
+            if random.random() > 0.8:
+                filename = filename.replace("_", "").replace("-", "")
 
             samples.append(
                 {
@@ -851,6 +1101,15 @@ class TwoStageDatasetGenerator:
         )
         print(f"Stage 2 label distribution:\n{stage2_train['label'].value_counts()}")
 
+        print("\nGenerating Final Two-Step Test dataset...")
+        final_test = self.generate_final_test_dataset(n_samples=10000)
+        final_test.to_csv(f"{output_dir}/final_two_step_test.csv", index=False)
+
+        print(f"Final Test - Samples: {len(final_test)}")
+        print(
+            f"Final Test table distribution:\n{final_test['True Table Name'].value_counts()}"
+        )
+
         # Save domain metadata
         with open(f"{output_dir}/domain_metadata.json", "w") as f:
             json.dump(self.domains, f, indent=2)
@@ -869,6 +1128,90 @@ class TwoStageDatasetGenerator:
             }
 
         return stats
+
+    def generate_final_test_dataset(self, n_samples=10000, test_seed=999):
+        """
+        Generate final two-step test dataset with both file name and column mapping.
+        Uses a different random seed to ensure no overlap with train/val data.
+
+        Args:
+            n_samples: Total number of test samples to generate
+            test_seed: Different random seed for test data generation
+
+        Returns:
+            DataFrame with columns: input_file_name, input_column_name,
+                                    output_table_name, output_column_name
+        """
+        # Temporarily set different random seed for test data
+        original_random_state = random.getstate()
+        original_np_state = np.random.get_state()
+
+        random.seed(test_seed)
+        np.random.seed(test_seed)
+
+        samples = []
+        tables = list(self.domains.keys())
+        samples_per_table = n_samples // len(tables)
+
+        for table in tables:
+            standard_columns = self.domains[table]["standard_columns"]
+            patterns = self.file_patterns[table]
+
+            # Get all filename patterns for this table
+            all_patterns = (
+                patterns["explicit"]
+                + patterns["implicit"]
+                + patterns["abbreviations"]
+                + patterns["ambiguous"]
+            )
+
+            # Generate samples for each standard column in this table
+            samples_per_column = max(1, samples_per_table // len(standard_columns))
+
+            for standard_col in standard_columns:
+                for _ in range(samples_per_column):
+                    # Generate a filename for this table
+                    pattern = random.choice(all_patterns)
+                    ext = random.choice(["csv", "xlsx", "parquet", "tsv"])
+
+                    # Handle date/version placeholders
+                    filename = pattern.format(
+                        ext=ext,
+                        date=(
+                            random.choice(["2024", "jan_2024", "q1_2024"])
+                            if "{date}" in pattern
+                            else ""
+                        ),
+                        version=(
+                            random.choice(["v1", "final"])
+                            if "{version}" in pattern
+                            else ""
+                        ),
+                    )
+
+                    # Apply case variation
+                    filename = self._apply_case_variation(filename)
+
+                    # Generate a transformed version of the standard column
+                    raw_column = self._transform_column_name(standard_col)
+
+                    samples.append(
+                        {
+                            "Input File Name": filename,
+                            "Input Column Name": raw_column,
+                            "True Table Name": table,
+                            "True Column Name": standard_col,
+                        }
+                    )
+
+        # Shuffle the samples
+        random.shuffle(samples)
+
+        # Restore original random state
+        random.setstate(original_random_state)
+        np.random.set_state(original_np_state)
+
+        return pd.DataFrame(samples)
 
 
 # Example usage
