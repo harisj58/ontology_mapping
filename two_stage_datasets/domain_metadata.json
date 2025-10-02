@@ -1,207 +1,183 @@
 {
-  "customers": {
+  "fact": {
     "standard_columns": [
-      "customer_id",
-      "customer_name",
-      "customer_email",
-      "customer_phone",
-      "customer_address",
-      "customer_city",
-      "customer_state",
-      "customer_zip",
-      "customer_country",
-      "customer_type",
-      "registration_date",
-      "last_login_date",
-      "customer_status",
-      "preferred_language",
-      "customer_segment",
-      "loyalty_points",
-      "date_of_birth",
-      "gender",
-      "occupation",
-      "income_range"
+      "GEOGRAPHY_KEY_TOTAL",
+      "TIME_KEY_TOTAL",
+      "UPC_13_DIGIT_TOTAL",
+      "DOLLAR_SALES_TOTAL",
+      "DOLLAR_SALES_ANY_MERCH",
+      "DOLLAR_SALES_PRICE_REDUCTIONS_ONLY",
+      "DOLLAR_SALES_FEATURE_ONLY",
+      "DOLLAR_SALES_DISPLAY_ONLY",
+      "DOLLAR_SALES_FEATURE_AND_DISPLAY",
+      "UNIT_SALES_TOTAL",
+      "UNIT_SALES_ANY_MERCH",
+      "UNIT_SALES_PRICE_REDUCTIONS_ONLY",
+      "UNIT_SALES_FEATURE_ONLY",
+      "UNIT_SALES_DISPLAY_ONLY",
+      "UNIT_SALES_FEATURE_AND_DISPLAY",
+      "VOLUME_SALES_TOTAL",
+      "VOLUME_SALES_ANY_MERCH",
+      "VOLUME_SALES_PRICE_REDUCTIONS_ONLY",
+      "VOLUME_SALES_FEATURE_ONLY",
+      "VOLUME_SALES_DISPLAY_ONLY",
+      "VOLUME_SALES_FEATURE_AND_DISPLAY",
+      "BASE_DOLLAR_SALES_TOTAL",
+      "BASE_UNIT_SALES_TOTAL",
+      "BASE_VOLUME_SALES_TOTAL",
+      "ACV_WEIGHTED_DISTRIBUTION_TOTAL",
+      "AVERAGE_WEEKLY_ACV_DISTRIBUTION_TOTAL",
+      "AVERAGE_WEEKLY_ACV_DISTRIBUTION_ANY_MERCH",
+      "AVERAGE_WEEKLY_ACV_DISTRIBUTION_PRICE_REDUCTIONS_ONLY",
+      "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_ONLY",
+      "AVERAGE_WEEKLY_ACV_DISTRIBUTION_DISPLAY_ONLY",
+      "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_AND_DISPLAY",
+      "INCREMENTAL_VOLUME_TOTAL",
+      "INCREMENTAL_VOLUME_PRICE_REDUCTIONS_ONLY",
+      "INCREMENTAL_VOLUME_FEATURE_ONLY",
+      "INCREMENTAL_VOLUME_DISPLAY_ONLY",
+      "INCREMENTAL_VOLUME_FEATURE_AND_DISPLAY",
+      "WEIGHTED_AVERAGE_BASE_PRICE_PER_VOLUME_TOTAL",
+      "CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+      "TOTAL_POINTS_OF_CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+      "DISCOUNT_TOTAL"
     ],
     "semantic_groups": {
       "identifiers": [
-        "customer_id"
+        "GEOGRAPHY_KEY_TOTAL",
+        "TIME_KEY_TOTAL",
+        "UPC_13_DIGIT_TOTAL"
       ],
-      "personal_info": [
-        "customer_name",
-        "date_of_birth",
-        "gender",
-        "occupation"
+      "sales_dollar": [
+        "DOLLAR_SALES_TOTAL",
+        "DOLLAR_SALES_ANY_MERCH",
+        "DOLLAR_SALES_PRICE_REDUCTIONS_ONLY",
+        "DOLLAR_SALES_FEATURE_ONLY",
+        "DOLLAR_SALES_DISPLAY_ONLY",
+        "DOLLAR_SALES_FEATURE_AND_DISPLAY",
+        "BASE_DOLLAR_SALES_TOTAL"
       ],
-      "contact": [
-        "customer_email",
-        "customer_phone",
-        "customer_address"
+      "sales_unit": [
+        "UNIT_SALES_TOTAL",
+        "UNIT_SALES_ANY_MERCH",
+        "UNIT_SALES_PRICE_REDUCTIONS_ONLY",
+        "UNIT_SALES_FEATURE_ONLY",
+        "UNIT_SALES_DISPLAY_ONLY",
+        "UNIT_SALES_FEATURE_AND_DISPLAY",
+        "BASE_UNIT_SALES_TOTAL"
       ],
-      "location": [
-        "customer_city",
-        "customer_state",
-        "customer_zip",
-        "customer_country"
+      "sales_volume": [
+        "VOLUME_SALES_TOTAL",
+        "VOLUME_SALES_ANY_MERCH",
+        "VOLUME_SALES_PRICE_REDUCTIONS_ONLY",
+        "VOLUME_SALES_FEATURE_ONLY",
+        "VOLUME_SALES_DISPLAY_ONLY",
+        "VOLUME_SALES_FEATURE_AND_DISPLAY",
+        "BASE_VOLUME_SALES_TOTAL"
+      ],
+      "distribution": [
+        "ACV_WEIGHTED_DISTRIBUTION_TOTAL",
+        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_TOTAL",
+        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_ANY_MERCH",
+        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_PRICE_REDUCTIONS_ONLY",
+        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_ONLY",
+        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_DISPLAY_ONLY",
+        "AVERAGE_WEEKLY_ACV_DISTRIBUTION_FEATURE_AND_DISPLAY",
+        "CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL",
+        "TOTAL_POINTS_OF_CATEGORY_WEIGHTED_DISTRIBUTION_TOTAL"
+      ],
+      "incremental_metrics": [
+        "INCREMENTAL_VOLUME_TOTAL",
+        "INCREMENTAL_VOLUME_PRICE_REDUCTIONS_ONLY",
+        "INCREMENTAL_VOLUME_FEATURE_ONLY",
+        "INCREMENTAL_VOLUME_DISPLAY_ONLY",
+        "INCREMENTAL_VOLUME_FEATURE_AND_DISPLAY"
+      ],
+      "pricing": [
+        "WEIGHTED_AVERAGE_BASE_PRICE_PER_VOLUME_TOTAL",
+        "DISCOUNT_TOTAL"
       ]
     }
   },
-  "orders": {
+  "geography_dim": {
     "standard_columns": [
-      "order_id",
-      "customer_id",
-      "order_date",
-      "order_status",
-      "order_total",
-      "payment_method",
-      "shipping_address",
-      "shipping_city",
-      "shipping_state",
-      "shipping_zip",
-      "delivery_date",
-      "order_notes",
-      "discount_amount",
-      "tax_amount",
-      "shipping_cost",
-      "order_source",
-      "coupon_code",
-      "estimated_delivery",
-      "actual_delivery",
-      "order_priority"
+      "GEOGRAPHY_KEY",
+      "GEOGRAPHY_DESCRIPTION"
     ],
     "semantic_groups": {
       "identifiers": [
-        "order_id",
-        "customer_id"
+        "GEOGRAPHY_KEY"
       ],
-      "financial": [
-        "order_total",
-        "discount_amount",
-        "tax_amount",
-        "shipping_cost"
-      ],
-      "temporal": [
-        "order_date",
-        "delivery_date",
-        "estimated_delivery",
-        "actual_delivery"
+      "descriptions": [
+        "GEOGRAPHY_DESCRIPTION"
       ]
     }
   },
-  "products": {
+  "product_dim": {
     "standard_columns": [
-      "product_id",
-      "product_name",
-      "product_description",
-      "product_category",
-      "product_subcategory",
-      "product_brand",
-      "product_price",
-      "product_cost",
-      "product_sku",
-      "product_barcode",
-      "stock_quantity",
-      "reorder_level",
-      "supplier_id",
-      "product_weight",
-      "product_dimensions",
-      "product_color",
-      "product_size",
-      "product_status",
-      "date_added",
-      "last_updated"
+      "PRODUCT_DESCRIPTION",
+      "UPC_13_DIGIT",
+      "ALTERNATIVE_ADULT_BEVERAGE_VALUE",
+      "BEER_CATEGORY_VALUE",
+      "BEER_VENDOR_VALUE",
+      "BEER_SEGMENT_VALUE",
+      "BEER_PRICE_SEGMENT_VALUE",
+      "BEER_BRAND_FAMILY_VALUE",
+      "BEER_BRAND_VALUE",
+      "BEER_DOM_VS_IMP_VALUE",
+      "BEER_PACKAGE_VALUE",
+      "BEER_SIZE_VALUE",
+      "BEER_BRAND_TYPE_VALUE",
+      "BEER_SIZE_GROUP_VALUE",
+      "MEZZO_STYLE_VALUE",
+      "MACRO_STYLE_VALUE",
+      "MICRO_STYLE_VALUE",
+      "BEER_COUNT_GROUP_VALUE"
     ],
     "semantic_groups": {
       "identifiers": [
-        "product_id",
-        "product_sku",
-        "product_barcode"
+        "UPC_13_DIGIT"
       ],
-      "descriptive": [
-        "product_name",
-        "product_description",
-        "product_category"
+      "descriptions": [
+        "PRODUCT_DESCRIPTION"
       ],
-      "financial": [
-        "product_price",
-        "product_cost"
+      "category_attributes": [
+        "ALTERNATIVE_ADULT_BEVERAGE_VALUE",
+        "BEER_CATEGORY_VALUE",
+        "BEER_SEGMENT_VALUE",
+        "BEER_PRICE_SEGMENT_VALUE"
+      ],
+      "brand_attributes": [
+        "BEER_VENDOR_VALUE",
+        "BEER_BRAND_FAMILY_VALUE",
+        "BEER_BRAND_VALUE",
+        "BEER_BRAND_TYPE_VALUE",
+        "BEER_DOM_VS_IMP_VALUE"
+      ],
+      "packaging_attributes": [
+        "BEER_PACKAGE_VALUE",
+        "BEER_SIZE_VALUE",
+        "BEER_SIZE_GROUP_VALUE",
+        "BEER_COUNT_GROUP_VALUE"
+      ],
+      "style_attributes": [
+        "MEZZO_STYLE_VALUE",
+        "MACRO_STYLE_VALUE",
+        "MICRO_STYLE_VALUE"
       ]
     }
   },
-  "employees": {
+  "time_dim": {
     "standard_columns": [
-      "employee_id",
-      "employee_name",
-      "employee_email",
-      "employee_phone",
-      "employee_department",
-      "employee_position",
-      "employee_salary",
-      "hire_date",
-      "termination_date",
-      "employee_status",
-      "manager_id",
-      "employee_address",
-      "employee_city",
-      "employee_state",
-      "employee_zip",
-      "date_of_birth",
-      "emergency_contact",
-      "emergency_phone",
-      "performance_rating",
-      "years_of_service"
+      "TIME_KEY",
+      "TIME_DESCRIPTION"
     ],
     "semantic_groups": {
       "identifiers": [
-        "employee_id"
+        "TIME_KEY"
       ],
-      "personal": [
-        "employee_name",
-        "date_of_birth"
-      ],
-      "contact": [
-        "employee_email",
-        "employee_phone"
-      ]
-    }
-  },
-  "transactions": {
-    "standard_columns": [
-      "transaction_id",
-      "order_id",
-      "customer_id",
-      "transaction_date",
-      "transaction_amount",
-      "transaction_type",
-      "transaction_status",
-      "payment_method",
-      "payment_processor",
-      "transaction_fee",
-      "currency_code",
-      "exchange_rate",
-      "card_last_four",
-      "authorization_code",
-      "settlement_date",
-      "refund_amount",
-      "refund_date",
-      "transaction_notes",
-      "merchant_id",
-      "terminal_id"
-    ],
-    "semantic_groups": {
-      "identifiers": [
-        "transaction_id",
-        "order_id",
-        "customer_id"
-      ],
-      "financial": [
-        "transaction_amount",
-        "transaction_fee",
-        "refund_amount"
-      ],
-      "temporal": [
-        "transaction_date",
-        "settlement_date",
-        "refund_date"
+      "descriptions": [
+        "TIME_DESCRIPTION"
       ]
     }
   }
